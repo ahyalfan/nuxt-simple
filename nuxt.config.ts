@@ -25,6 +25,11 @@ export default defineNuxtConfig({
     }
   },
 
+  // ini untuk mebuat dari domain mana image boleh dimasukan
+  // image: {
+  //   domains: ["https://cdn.dummyjson.com","http://localhost:3000"],
+  // },
+
   devtools: { enabled: true },
   modules: [
    "@nuxtjs/tailwindcss",

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import "../../types/types";
-import { RecipeResponse } from "../../types/types";
+import { type RecipeResponse } from "../../types/types";
 
 definePageMeta({
   // layout: "login", //ini untuk menentukan layoutnya yg mana // jika tidak dikasih maka akan pakai yg default
@@ -15,6 +14,23 @@ onMounted(() => {
 const { data, error } = await useFetch<RecipeResponse>(
   "https://dummyjson.com/recipes?limit=12"
 );
+
+const imgError = (events: Error) => {
+  console.log(events)
+}
+
+useSeoMeta({
+  title: "Nuxtcipes",
+  description: "Recipes for you to cook!",
+  ogTitle: "Nuxtcipes",
+  ogDescription: "Recipes for you to cook!",
+  ogImage: "/nuxt-course-hero.png",
+  ogUrl: `http:localhost:3000`,
+  twitterTitle: "Nuxtcipes",
+  twitterDescription: "Recipes for you to cook!",
+  twitterImage: "nuxt-course-hero.png",
+  twitterCard: "summary",
+});
 </script>
 <template>
   <main>
@@ -41,7 +57,8 @@ const { data, error } = await useFetch<RecipeResponse>(
             src="/nuxt-course-hero.png"
             format="webp"
             densities="x1"
-            alt=""
+            alt="Hero image"
+            @error="imgError"
           />
         </div>
       </div>
